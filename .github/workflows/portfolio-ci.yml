@@ -12,3 +12,7 @@ jobs:
           python-version: '3.12'
       - run: python -m pip install pytest typer
       - run: python -m pytest portfolio/tests -q
+      - run: docker build -t issue-agent-sandbox:local -f portfolio/Dockerfile .
+      - run: python -m pytest portfolio/tests/test_evaluation.py -q
+        env:
+          RUN_DOCKER_TESTS: '1'

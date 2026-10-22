@@ -186,3 +186,8 @@ pyrightconfig.json
 
 # End of https://www.toptal.com/developers/gitignore/api/python
 
+
+# Live evaluation artifacts (download from Actions or explicitly curate for publication)
+results/
+*live-evaluation*.json
+*live-evaluation*.html

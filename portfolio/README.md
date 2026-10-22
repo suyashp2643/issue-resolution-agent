@@ -1,5 +1,9 @@
 # Issue Resolution Agent — evaluation and review extension
 
+## Model comparison
+
+See [EVALUATION.md](../EVALUATION.md) for the six-task paired model comparison and manual workflow. No live model results have been published yet.
+
 This directory extends **mini-swe-agent** with a small, reproducible issue-resolution experiment. Upstream agent code is preserved unchanged. Its authors and MIT license remain authoritative for upstream code.
 
 ## What this extension adds
@@ -34,7 +38,7 @@ Requires Docker and a configured model provider API key. The host calls the prov
 python -m pip install -e .
 docker build -f portfolio/Dockerfile -t issue-agent-sandbox:local .
 python -m portfolio.benchmark prepare empty_average ./work-empty-average
-python -m portfolio.run_agent --workspace ./work-empty-average --model YOUR_PROVIDER_MODEL
+python -m portfolio.run_agent ./work-empty-average YOUR_PROVIDER_MODEL
 python -m portfolio.benchmark grade empty_average ./work-empty-average/candidate.py
 ```
 

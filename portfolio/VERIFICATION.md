@@ -7,3 +7,10 @@ Python 3.12.
 - Python compilation and `git diff --check` passed.
 
 No upstream full test suite run. No live LLM calls. No Docker executable available, so Docker integration and live agent execution remain unverified. These fixture checks are not an LLM solve-rate benchmark; fixtures and assertions are public.
+
+## Evaluation extension validation
+
+The new live comparison has not run against a real model: no provider key was available.
+Local checks: 8 passed, 2 Docker integration tests skipped because Docker is unavailable.
+The two Docker checks run in GitHub CI using fixed protocol responses, not a real LLM.
+See EVALUATION.md at the repository root for the complete protocol and manual model workflow.
