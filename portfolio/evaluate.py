@@ -9,7 +9,7 @@ import typer
 
 from portfolio.eval_runtime import Chat, digest, run_matrix
 
-app = typer.Typer()
+app = typer.Typer(pretty_exceptions_enable=False)
 CASES = Path(__file__).with_name("evaluation_cases.json")
 
 

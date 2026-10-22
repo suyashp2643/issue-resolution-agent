@@ -115,3 +115,42 @@ def test_worker_diagnostics_redact_provider_details():
     assert worker_error("json.decoder.JSONDecodeError: private response", 1)["category"] == "model_returned_invalid_json"
     assert worker_error("private unknown exception", 124)["category"] == "worker_timeout"
     assert "private" not in str(worker_error("private unknown exception", 1))
+
+
+def test_ansi_and_unexpected_response_diagnostics():
+    from portfolio.eval_runtime import worker_error
+    assert worker_error("\x1b[31mHTTPError: HTTP Error 403: Forbidden\x1b[0m", 1)["http_status"] == 403
+    result = worker_error("TypeError: secret-provider-response-must-not-leak", 1)
+    assert result["exception_type"] == "TypeError"
+    assert result["category"] == "unexpected_response_type"
+    assert "secret-provider" not in str(result)
+    assert worker_error("Usage: python -m portfolio.evaluate [OPTIONS]", 2)["category"] == "worker_cli_arguments_rejected"
+
+
+def test_worker_cli_reports_null_model_content_without_docker(tmp_path):
+    from portfolio.eval_runtime import worker_error
+    class Handler(BaseHTTPRequestHandler):
+        def do_POST(self):
+            self.rfile.read(int(self.headers["Content-Length"]))
+            self.send_response(200)
+            self.end_headers()
+            self.wfile.write(b'{"choices":[{"message":{"content":null}}]}')
+        def log_message(self, *_):
+            pass
+    server = HTTPServer(("127.0.0.1", 0), Handler)
+    thread = threading.Thread(target=server.serve_forever, daemon=True)
+    thread.start()
+    try:
+        request = tmp_path / "request.json"
+        request.write_text(json.dumps({"case": json.loads(CASES.read_text())[0], "method": "single_shot", "model": "protocol-only", "result": str(tmp_path / "result.json")}))
+        process = subprocess.run([sys.executable, "-m", "portfolio.evaluate", "--worker", str(request)],
+            env=dict(os.environ, LLM_API_KEY="fake-protocol-key", LLM_BASE_URL=f"http://127.0.0.1:{server.server_port}/v1", TYPER_STANDARD_TRACEBACK="1"), capture_output=True, text=True, timeout=20)
+        error = worker_error(process.stderr, process.returncode)
+        assert process.returncode == 1
+        assert error["category"] == "unexpected_response_type"
+        assert error["exception_type"] == "TypeError"
+        assert "fake-protocol-key" not in str(error)
+    finally:
+        server.shutdown()
+        thread.join()
+        server.server_close()
