@@ -1,0 +1,126 @@
+{
+  "mode": "grader_fixture_verification_NOT_agent_benchmark",
+  "results": [
+    {
+      "candidate": "unchanged",
+      "task": "empty_average",
+      "candidate_hash": "487b1ab0923ae2da897e35367001324ac3207533dead1d8d37ce27eb969fd48f",
+      "resolved": false,
+      "suites": {
+        "fix": {
+          "passed": false,
+          "output": "Traceback (most recent call last):\n  File \"/tmp/tmpbnubjyb6/check.py\", line 5, in <module>\n    assert m.average([]) is None\n           ^^^^^^^^^^^^^\n  File \"/tmp/tmpbnubjyb6/candidate.py\", line 2, in average\n    return sum(values) / len(values)\n           ~~~~~~~~~~~~^~~~~~~~~~~~~\nZeroDivisionError: division by zero\n"
+        },
+        "regression": {
+          "passed": true,
+          "output": ""
+        }
+      },
+      "seconds": 0.0483
+    },
+    {
+      "candidate": "reference_repair",
+      "task": "empty_average",
+      "candidate_hash": "5248ed0c21318086ac872ca80151905d46f3169c5e1d2c8740ecc48409adf1de",
+      "resolved": true,
+      "suites": {
+        "fix": {
+          "passed": true,
+          "output": ""
+        },
+        "regression": {
+          "passed": true,
+          "output": ""
+        }
+      },
+      "seconds": 0.0406
+    },
+    {
+      "candidate": "unchanged",
+      "task": "inclusive_overlap",
+      "candidate_hash": "e7145396cbf465daae03e5bb9b64d51850c765d71df58787ab0fca67478a0cc7",
+      "resolved": false,
+      "suites": {
+        "fix": {
+          "passed": false,
+          "output": "Traceback (most recent call last):\n  File \"/tmp/tmpchr92a79/check.py\", line 5, in <module>\n    assert m.overlaps((1, 2), (2, 3)) is True\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+        },
+        "regression": {
+          "passed": true,
+          "output": ""
+        }
+      },
+      "seconds": 0.0419
+    },
+    {
+      "candidate": "reference_repair",
+      "task": "inclusive_overlap",
+      "candidate_hash": "694e24d16d036731ce43bd8a1a87337d9c25f78a8c2bcbcd5dc5820e1f2c759b",
+      "resolved": true,
+      "suites": {
+        "fix": {
+          "passed": true,
+          "output": ""
+        },
+        "regression": {
+          "passed": true,
+          "output": ""
+        }
+      },
+      "seconds": 0.044
+    },
+    {
+      "candidate": "unchanged",
+      "task": "stable_unique",
+      "candidate_hash": "3bcb3038ccc9f43cb0bdbb0181ed034bc49da2a9a0de9e926663a2010cf110a7",
+      "resolved": false,
+      "suites": {
+        "fix": {
+          "passed": false,
+          "output": "Traceback (most recent call last):\n  File \"/tmp/tmpwaui82bi/check.py\", line 5, in <module>\n    assert m.unique([3, 1, 3, 2]) == [3, 1, 2]\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+        },
+        "regression": {
+          "passed": true,
+          "output": ""
+        }
+      },
+      "seconds": 0.0378
+    },
+    {
+      "candidate": "reference_repair",
+      "task": "stable_unique",
+      "candidate_hash": "3c21a5d7cecb780bc53a62ac3f68caa5624b2f94c17c9501b436549b44ea1f09",
+      "resolved": true,
+      "suites": {
+        "fix": {
+          "passed": true,
+          "output": ""
+        },
+        "regression": {
+          "passed": true,
+          "output": ""
+        }
+      },
+      "seconds": 0.0485
+    },
+    {
+      "candidate": "regression_introducing_patch",
+      "task": "empty_average",
+      "candidate_hash": "1f668a37516993a68567cd9e1a433cbfef8103315a1b674a4fca93bfdb6e4276",
+      "resolved": false,
+      "suites": {
+        "fix": {
+          "passed": true,
+          "output": ""
+        },
+        "regression": {
+          "passed": false,
+          "output": "Traceback (most recent call last):\n  File \"/tmp/tmpj6n27pfj/check.py\", line 5, in <module>\n    assert m.average([2, 4]) == 3\n           ^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n"
+        }
+      },
+      "seconds": 0.0357
+    }
+  ],
+  "llm_calls": 0,
+  "note": "Reference repairs are hand-written. No model success rate is claimed. Tests are public, so this fixture set is not a held-out benchmark."
+}

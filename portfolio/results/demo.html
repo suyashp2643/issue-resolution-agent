@@ -1,0 +1,126 @@
+<!doctype html><meta charset='utf-8'><title>Issue resolution evaluation</title><style>body{max-width:1000px;margin:40px auto;font:16px system-ui;background:#101827;color:#e2e8f0}pre{white-space:pre-wrap;background:#1e293b;padding:24px;border-radius:12px}</style><h1>Issue resolution evaluation</h1><pre>{
+  &quot;mode&quot;: &quot;grader_fixture_verification_NOT_agent_benchmark&quot;,
+  &quot;results&quot;: [
+    {
+      &quot;candidate&quot;: &quot;unchanged&quot;,
+      &quot;task&quot;: &quot;empty_average&quot;,
+      &quot;candidate_hash&quot;: &quot;487b1ab0923ae2da897e35367001324ac3207533dead1d8d37ce27eb969fd48f&quot;,
+      &quot;resolved&quot;: false,
+      &quot;suites&quot;: {
+        &quot;fix&quot;: {
+          &quot;passed&quot;: false,
+          &quot;output&quot;: &quot;Traceback (most recent call last):\n  File \&quot;/tmp/tmpbnubjyb6/check.py\&quot;, line 5, in &lt;module&gt;\n    assert m.average([]) is None\n           ^^^^^^^^^^^^^\n  File \&quot;/tmp/tmpbnubjyb6/candidate.py\&quot;, line 2, in average\n    return sum(values) / len(values)\n           ~~~~~~~~~~~~^~~~~~~~~~~~~\nZeroDivisionError: division by zero\n&quot;
+        },
+        &quot;regression&quot;: {
+          &quot;passed&quot;: true,
+          &quot;output&quot;: &quot;&quot;
+        }
+      },
+      &quot;seconds&quot;: 0.0483
+    },
+    {
+      &quot;candidate&quot;: &quot;reference_repair&quot;,
+      &quot;task&quot;: &quot;empty_average&quot;,
+      &quot;candidate_hash&quot;: &quot;5248ed0c21318086ac872ca80151905d46f3169c5e1d2c8740ecc48409adf1de&quot;,
+      &quot;resolved&quot;: true,
+      &quot;suites&quot;: {
+        &quot;fix&quot;: {
+          &quot;passed&quot;: true,
+          &quot;output&quot;: &quot;&quot;
+        },
+        &quot;regression&quot;: {
+          &quot;passed&quot;: true,
+          &quot;output&quot;: &quot;&quot;
+        }
+      },
+      &quot;seconds&quot;: 0.0406
+    },
+    {
+      &quot;candidate&quot;: &quot;unchanged&quot;,
+      &quot;task&quot;: &quot;inclusive_overlap&quot;,
+      &quot;candidate_hash&quot;: &quot;e7145396cbf465daae03e5bb9b64d51850c765d71df58787ab0fca67478a0cc7&quot;,
+      &quot;resolved&quot;: false,
+      &quot;suites&quot;: {
+        &quot;fix&quot;: {
+          &quot;passed&quot;: false,
+          &quot;output&quot;: &quot;Traceback (most recent call last):\n  File \&quot;/tmp/tmpchr92a79/check.py\&quot;, line 5, in &lt;module&gt;\n    assert m.overlaps((1, 2), (2, 3)) is True\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n&quot;
+        },
+        &quot;regression&quot;: {
+          &quot;passed&quot;: true,
+          &quot;output&quot;: &quot;&quot;
+        }
+      },
+      &quot;seconds&quot;: 0.0419
+    },
+    {
+      &quot;candidate&quot;: &quot;reference_repair&quot;,
+      &quot;task&quot;: &quot;inclusive_overlap&quot;,
+      &quot;candidate_hash&quot;: &quot;694e24d16d036731ce43bd8a1a87337d9c25f78a8c2bcbcd5dc5820e1f2c759b&quot;,
+      &quot;resolved&quot;: true,
+      &quot;suites&quot;: {
+        &quot;fix&quot;: {
+          &quot;passed&quot;: true,
+          &quot;output&quot;: &quot;&quot;
+        },
+        &quot;regression&quot;: {
+          &quot;passed&quot;: true,
+          &quot;output&quot;: &quot;&quot;
+        }
+      },
+      &quot;seconds&quot;: 0.044
+    },
+    {
+      &quot;candidate&quot;: &quot;unchanged&quot;,
+      &quot;task&quot;: &quot;stable_unique&quot;,
+      &quot;candidate_hash&quot;: &quot;3bcb3038ccc9f43cb0bdbb0181ed034bc49da2a9a0de9e926663a2010cf110a7&quot;,
+      &quot;resolved&quot;: false,
+      &quot;suites&quot;: {
+        &quot;fix&quot;: {
+          &quot;passed&quot;: false,
+          &quot;output&quot;: &quot;Traceback (most recent call last):\n  File \&quot;/tmp/tmpwaui82bi/check.py\&quot;, line 5, in &lt;module&gt;\n    assert m.unique([3, 1, 3, 2]) == [3, 1, 2]\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n&quot;
+        },
+        &quot;regression&quot;: {
+          &quot;passed&quot;: true,
+          &quot;output&quot;: &quot;&quot;
+        }
+      },
+      &quot;seconds&quot;: 0.0378
+    },
+    {
+      &quot;candidate&quot;: &quot;reference_repair&quot;,
+      &quot;task&quot;: &quot;stable_unique&quot;,
+      &quot;candidate_hash&quot;: &quot;3c21a5d7cecb780bc53a62ac3f68caa5624b2f94c17c9501b436549b44ea1f09&quot;,
+      &quot;resolved&quot;: true,
+      &quot;suites&quot;: {
+        &quot;fix&quot;: {
+          &quot;passed&quot;: true,
+          &quot;output&quot;: &quot;&quot;
+        },
+        &quot;regression&quot;: {
+          &quot;passed&quot;: true,
+          &quot;output&quot;: &quot;&quot;
+        }
+      },
+      &quot;seconds&quot;: 0.0485
+    },
+    {
+      &quot;candidate&quot;: &quot;regression_introducing_patch&quot;,
+      &quot;task&quot;: &quot;empty_average&quot;,
+      &quot;candidate_hash&quot;: &quot;1f668a37516993a68567cd9e1a433cbfef8103315a1b674a4fca93bfdb6e4276&quot;,
+      &quot;resolved&quot;: false,
+      &quot;suites&quot;: {
+        &quot;fix&quot;: {
+          &quot;passed&quot;: true,
+          &quot;output&quot;: &quot;&quot;
+        },
+        &quot;regression&quot;: {
+          &quot;passed&quot;: false,
+          &quot;output&quot;: &quot;Traceback (most recent call last):\n  File \&quot;/tmp/tmpj6n27pfj/check.py\&quot;, line 5, in &lt;module&gt;\n    assert m.average([2, 4]) == 3\n           ^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n&quot;
+        }
+      },
+      &quot;seconds&quot;: 0.0357
+    }
+  ],
+  &quot;llm_calls&quot;: 0,
+  &quot;note&quot;: &quot;Reference repairs are hand-written. No model success rate is claimed. Tests are public, so this fixture set is not a held-out benchmark.&quot;
+}</pre>
